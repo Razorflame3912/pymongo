@@ -40,6 +40,14 @@ def find_zip_and_maxscore(zipcode,score):
         i+=1
     print str(i) + ' found'
 
+def find_zip_and_cuisine(zipcode,cuisine):
+    cursor = collection.find({'address.zipcode': zipcode , 'cuisine' : cuisine})
+    print 'RESTAURANTS IN ' + zipcode + ' WITH ' + str(cuisine) + ' CUISINE:\n'
+    i = 0
+    for result in cursor:
+        print result['name']
+        i+=1
+    print str(i) + ' found'
 
 find_borough('Brooklyn')
 print '\n\n\n\n'
@@ -48,3 +56,5 @@ print '\n\n\n\n'
 find_zip_and_grade('11209','A')
 print '\n\n\n\n'
 find_zip_and_maxscore('11209',5)
+print '\n\n\n\n'
+find_zip_and_cuisine('11209','Middle Eastern')
